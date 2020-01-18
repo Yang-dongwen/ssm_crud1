@@ -1,6 +1,14 @@
 package com.ydw.bean;
 
 public class Dept {
+    public Dept(Integer deptId, String deptName) {
+        this.deptId = deptId;
+        this.deptName = deptName;
+    }
+
+    public Dept() {
+    }
+
     private Integer deptId;
 
     private String deptName;

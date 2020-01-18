@@ -1,5 +1,6 @@
 package com.ydw.test;
 
+import com.ydw.bean.Dept;
 import com.ydw.dao.DeptMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ public class CRUDTest {
 
     @Test
     public void test(){
-        System.out.println(mapper);
+        Dept dept = new Dept(001,"人事部");
+        mapper.insert(dept);
     }
 }

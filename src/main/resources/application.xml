@@ -11,10 +11,11 @@
           http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <context:property-placeholder location="jdbc.properties"/>
 <context:component-scan base-package="com.ydw.*" use-default-filters="false">
     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 </context:component-scan>
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql///ssm_curd" p:password="123" p:username="root">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" p:driverClassName="${db.driverClassName}" p:url="${db.url}" p:password="${db.password}" p:username="${db.username}">
     </bean>
 
     <!--配置和mybatis的整合-->
