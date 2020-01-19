@@ -9,6 +9,14 @@ public class Employee {
 
     private String email;
 
+    public Employee(Integer empId, String empName, String gender, String email, Integer dId) {
+        this.empId = empId;
+        this.empName = empName;
+        this.gender = gender;
+        this.email = email;
+        this.dId = dId;
+    }
+
     private Integer dId;
 
     public Integer getEmpId() {
@@ -17,6 +25,9 @@ public class Employee {
 
     public void setEmpId(Integer empId) {
         this.empId = empId;
+    }
+
+    public Employee() {
     }
 
     public String getEmpName() {
