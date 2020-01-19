@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -19,9 +20,26 @@ public class EmployeeController {
     EmployeeService empservice;
 
     /**
-     *查询所有员工信息（分页查询）
+     * 利用ajax请求分页查询
      */
     @RequestMapping("/emps")
+    @ResponseBody
+    public PageInfo getEmps_2(@RequestParam(value = "pn",defaultValue = "1")Integer pn, Model model){
+        // 查询之前只需调用，传入页码，以及分页页面的大小。
+        PageHelper.startPage(pn,5);
+        // startPage 后面紧跟的查询就是个分页查询
+        List<Employee> emps = empservice.getAll();
+
+        // 使用pageInfo包装查询结果  封装了详细的信息，，包括我们查出来的结果数据 传入连续显示的页数
+        PageInfo page = new PageInfo(emps,5);
+
+        return page;
+    }
+
+    /**
+     *查询所有员工信息（分页查询）
+     */
+//    @RequestMapping("/emps")
     public String getEmps(@RequestParam(value = "pn",defaultValue = "1")Integer pn, Model model){
 
         // 查询之前只需调用，传入页码，以及分页页面的大小。
