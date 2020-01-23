@@ -37,4 +37,8 @@ public class CRUDTest {
         }
         System.out.println("批量成功");
     }
+    @Test
+    public void testOne(){
+        System.out.println(111);
+    }
 }
