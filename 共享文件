@@ -1,44 +1,14 @@
-import java.util.*;
+给定一个整数n(10<n<100)，求从1到n这n个整数的十进制表示中1 出现的次数。
+如果输入的值不在范围内容，则输出：-1.
+示例1
+输入：12
+输出：5
+解释：从1 到12 这些整数中包含1 的数字有1，10，11 和12，1 一共出现了5 次。
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        String[] nums = input.split(",");
-        int n = nums.length - 1; // 数组长度
-        int y = Integer.parseInt(nums[nums.length - 1]); // 目标值
-        int[] x = new int[n]; // 数组 x
+示例2
+输入：101
+输出：-1
+解释：输入值不在范围内。
 
-        // 解析输入数组 x
-        for (int i = 0; i < n; i++) {
-            x[i] = Integer.parseInt(nums[i]);
-        }
-
-        // 处理特殊情况
-        if (n < 2) {
-            System.out.println("-1,-1");
-            return;
-        }
-
-        // 判断是否存在负数
-        for (int i = 0; i < n; i++) {
-            if (x[i] < 0) {
-                System.out.println("-1,-1");
-                return;
-            }
-        }
-
-        // 寻找和为 y 的数字对
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (x[i] + x[j] == y) {
-                    System.out.println(Math.min(x[i], x[j]) + "," + Math.max(x[i], x[j]));
-                    return;
-                }
-            }
-        }
-
-        // 没有找到符合条件的数字对
-        System.out.println("0,0");
-    }
-}
+解答要求
+时间限制：1000ms, 内存限制：256MB
