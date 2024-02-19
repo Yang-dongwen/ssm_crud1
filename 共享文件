@@ -1,14 +1,26 @@
-给定一个整数n(10<n<100)，求从1到n这n个整数的十进制表示中1 出现的次数。
-如果输入的值不在范围内容，则输出：-1.
-示例1
-输入：12
-输出：5
-解释：从1 到12 这些整数中包含1 的数字有1，10，11 和12，1 一共出现了5 次。
+import java.util.Scanner;
 
-示例2
-输入：101
-输出：-1
-解释：输入值不在范围内。
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
 
-解答要求
-时间限制：1000ms, 内存限制：256MB
+        // 判断输入是否在范围内
+        if (n <= 10 || n >= 100) {
+            System.out.println("-1");
+            return;
+        }
+
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            String numStr = String.valueOf(i);
+            for (int j = 0; j < numStr.length(); j++) {
+                if (numStr.charAt(j) == '1') {
+                    count++;
+                }
+            }
+        }
+
+        System.out.println(count);
+    }
+}
