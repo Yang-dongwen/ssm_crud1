@@ -15,7 +15,7 @@ public class Main {
         }
 
         // 处理特殊情况
-        if (n <= 1) {
+        if (n < 2) {
             System.out.println("-1,-1");
             return;
         }
