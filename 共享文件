@@ -1,19 +1,44 @@
-如果n不在范围，输出-1。
+import java.util.*;
 
-输入说明：输入的数中，最后一个数为y,前n个数为数组x。
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        String[] nums = input.split(",");
+        int n = nums.length - 1; // 数组长度
+        int y = Integer.parseInt(nums[nums.length - 1]); // 目标值
+        int[] x = new int[n]; // 数组 x
 
-示例1
-输入：1,2,4,7,11,15,15
-输出：4,11
-解释：和为15的数为[4,11],15，按数组下标顺序只输出：4，11。
+        // 解析输入数组 x
+        for (int i = 0; i < n; i++) {
+            x[i] = Integer.parseInt(nums[i]);
+        }
 
-示例1
-输入：1,2
-输出：-1
-解释：数组长度不在范围内。
+        // 处理特殊情况
+        if (n <= 1) {
+            System.out.println("-1,-1");
+            return;
+        }
 
-注意：
-1.如果有多对数字的和等于输入的数字，输出数组下标从小到大输出第一对即可。
-2 为便于结果比较，输出时要求小数在前，大数在后
-3 如果没有这样的数字，输出0,0
-4 如果存在负数，输出-1,-1
+        // 判断是否存在负数
+        for (int i = 0; i < n; i++) {
+            if (x[i] < 0) {
+                System.out.println("-1,-1");
+                return;
+            }
+        }
+
+        // 寻找和为 y 的数字对
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (x[i] + x[j] == y) {
+                    System.out.println(Math.min(x[i], x[j]) + "," + Math.max(x[i], x[j]));
+                    return;
+                }
+            }
+        }
+
+        // 没有找到符合条件的数字对
+        System.out.println("0,0");
+    }
+}
